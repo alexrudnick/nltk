@@ -72,8 +72,11 @@ class StanfordTagger(TaggerI):
         # Write the actual sentences to the temporary input file
         _input_fh = os.fdopen(_input_fh, 'w')
         _input = '\n'.join((' '.join(x) for x in sentences))
-        if isinstance(_input, compat.text_type) and encoding:
-            _input = _input.encode(encoding)
+
+        ## XXX why are we doing this?
+        ## TODO(alexr): probably just take this out.
+        # if isinstance(_input, compat.text_type) and encoding:
+        #     _input = _input.encode(encoding)
         _input_fh.write(_input)
         _input_fh.close()
 
